@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/users/logout" => "users#logout", as: :logout
   get "/users/register" => "users#register", as: :register
   post "/users/register" => "users#create", as: :create_user
+  patch "/fines/:id/pay" => "fines#pay", as: :pay_fine
 
   resources :vehicles
   resources :fines

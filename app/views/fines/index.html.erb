@@ -10,6 +10,9 @@
       <th>Amount</th>
       <th>Payment Status</th>
       <th>Penalty Amount</th>
+      <th colspan="3">
+        <%= link_to 'New Fine', new_fine_path, class: "btn btn-success" %>
+      </th>
     </tr>
     </thead>
     <tbody>
@@ -21,6 +24,15 @@
         <td><%= fine.amount %></td>
         <td><%= fine.payment_status %></td>
         <td><%= fine.penalty_amount %></td>
+        <td>
+          <%= link_to 'Show', fine_path(fine), class: "btn btn-primary btn-sm m-1" %>
+          <% if can?(:write, Fine) %>
+          <%= link_to 'Edit', edit_fine_path(fine), class: "btn btn-warning btn-sm m-1" %>
+          <%= link_to 'Destroy', fine_path(fine),
+                      class: "btn btn-danger btn-sm m-1",
+                      data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
     </tbody>

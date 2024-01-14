@@ -1,0 +1,36 @@
+<!-- app/views/vehicles/show.html.erb -->
+<div class="container mt-5">
+  <h2>Vehicle Details</h2>
+  <table class="table table-bordered">
+    <tbody>
+    <tr>
+      <th scope="row">Plate Number</th>
+      <td><%= @vehicle.plate_number %></td>
+    </tr>
+
+    <tr>
+      <th scope="row">Type</th>
+      <td><%= @vehicle.vehicle_type %></td>
+    </tr>
+
+    <tr>
+      <th scope="row">Make</th>
+      <td><%= @vehicle.make %></td>
+    </tr>
+
+    <tr>
+      <th scope="row">Year of Production</th>
+      <td><%= @vehicle.year_of_production %></td>
+    </tr>
+
+    <tr>
+      <th scope="row">User</th>
+      <td><%= @vehicle.user.email %></td>
+    </tr>
+
+    <!-- Add other vehicle attributes as needed -->
+    </tbody>
+  </table>
+
+  <%= link_to 'Back to Vehicles', vehicles_path, class: 'btn btn-secondary' %>
+</div>

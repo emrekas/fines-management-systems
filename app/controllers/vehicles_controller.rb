@@ -1,10 +1,19 @@
 class VehiclesController < ApplicationController
-def index
-    @vehicles = Vehicle.all
+  load_and_authorize_resource
+  def index
+    if current_user.role == 'individual'
+      @vehicles = Vehicle.where(user_id: current_user.id).includes(:fines)
+    else
+      @vehicles = Vehicle.includes(:fines).all
+    end
   end
 
   def new
     @vehicle = Vehicle.new
+  end
+
+  def show
+    @vehicle = Vehicle.find(params[:id])
   end
 
   def create

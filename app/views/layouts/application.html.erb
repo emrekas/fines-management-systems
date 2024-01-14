@@ -67,10 +67,18 @@
       <h3 class="float-md-start mb-0">Cover</h3>
       <nav class="nav nav-masthead justify-content-center float-md-end">
         <%= link_to "Home", "/", class: ("nav-link #{'active' if current_page?(home_path)}") %>
+        <% if can? :read, Fine, Vehicle %>
         <%= link_to "Vehicles",  "/vehicles", class: ("nav-link #{'active' if current_page?(vehicles_path)}") %>
         <%= link_to "Fines",  "/fines", class: ("nav-link #{'active' if current_page?(fines_path)}") %>
-        <%= link_to "Login", "/users/login", class: ("nav-link #{'active' if current_page?(login_path)}") %>
-      </nav>
+        <% end %>
+
+        <% if @current_user == nil %>
+          <%= link_to "Login", "/users/login", class: ("nav-link #{'active' if current_page?(login_path)}") %>
+        <% else %>
+          <%= link_to "Profile", "/users/#{@current_user.id}", class: ("nav-link #{'active' if request.fullpath.start_with?('/users/')}") %>
+          <%= link_to "Logout", "/users/logout", class: ("nav-link #{'active' if current_page?(logout_path)}") %>
+        <% end %>
+          </nav>
     </div>
   </header>
 

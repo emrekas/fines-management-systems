@@ -1,0 +1,52 @@
+<!-- app/views/users/form -->
+<div class="container mt-5">
+  <%= form_with(model: @user, class: 'needs-validation', novalidate: true) do |form| %>
+    <div class="mb-3">
+      <%= form.label :email, class: 'form-label' %>
+      <%= form.email_field :email, class: 'form-control', required: true %>
+      <div class="invalid-feedback">
+        <% user.errors.full_messages_for(:body).each do |message| %>
+          <%= message %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :password, class: 'form-label' %>
+      <%= form.password_field :password, class: 'form-control', required: true %>
+      <div class="invalid-feedback">
+        Valid password is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control', required: true %>
+      <div class="invalid-feedback">
+        <% user.errors.full_messages_for(:body).each do |message| %>
+          <%= message %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :surname, class: 'form-label' %>
+      <%= form.text_field :surname, class: 'form-control', required: true %>
+      <div class="invalid-feedback">
+        Valid surname is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :role, class: 'form-label' %>
+      <%= form.text_field :role, class: 'form-control', required: true %>
+      <div class="invalid-feedback">
+        Valid role is required.
+      </div>
+    </div>
+
+    <!-- Add other user attributes as needed -->
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+  <% end %>
+</div>

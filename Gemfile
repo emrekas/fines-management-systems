@@ -9,6 +9,8 @@ gem "sassc-rails"
 gem 'bootstrap', '~> 5.3.2'
 gem 'jquery-rails'
 
+gem 'cancancan'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 

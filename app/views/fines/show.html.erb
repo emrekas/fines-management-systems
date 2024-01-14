@@ -1,0 +1,49 @@
+<!-- app/views/fines/show.html.erb -->
+<div class="container mt-5">
+  <h2>Fine Details</h2>
+  <table class="table table-bordered">
+    <tbody>
+    <tr>
+      <th scope="row">Reason</th>
+      <td><%= @fine.reason %></td>
+    </tr>
+
+    <tr>
+      <th scope="row">Place</th>
+      <td><%= @fine.place %></td>
+    </tr>
+
+    <tr>
+      <th scope="row">Time of Issue</th>
+      <td><%= @fine.time_of_issue %></td>
+    </tr>
+
+    <tr>
+      <th scope="row">Amount</th>
+      <td>$ <%= @fine.amount %></td>
+    </tr>
+
+    <tr>
+      <th scope="row">Payment Status</th>
+      <td>
+        <% if @fine.payment_status == 'paid' %>
+          <span class="badge bg-success"><%= @fine.payment_status %></span>
+        <% else %>
+          <span class="badge bg-danger"><%= @fine.payment_status %></span>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <th scope="row">Penalty Amount</th>
+      <td>$ <%= @fine.penalty_amount %></td>
+    </tr>
+
+    <!-- Add other fine attributes as needed -->
+    </tbody>
+  </table>
+  <% if can?(:write, Fine) && @fine.payment_status == 'unpaid' %>
+    <%= link_to 'Pay', "/fines/#{params[:id]}/pay", class: 'btn btn-primary', data: { turbo_method: :patch } %>
+  <% end %>
+    <%= link_to 'Back to Fines', fines_path, class: 'btn btn-secondary' %>
+</div>

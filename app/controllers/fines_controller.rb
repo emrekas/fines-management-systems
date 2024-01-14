@@ -1,6 +1,19 @@
 class FinesController < ApplicationController
+  load_and_authorize_resource
   def index
-    @fines = Fine.all
+    if current_user.role == 'individual'
+      @fines = Fine.includes(:vehicle).where(vehicles: {user_id: current_user.id})
+    else
+      @fines = Fine.all
+    end
+  end
+
+  def show
+    if current_user.role == 'individual'
+      @fine = Fine.includes(:vehicle).where(vehicles:{user_id: current_user.id}).find(params[:id])
+    else
+      @fine = Fine.find(params[:id])
+    end
   end
 
   def new
@@ -28,6 +41,19 @@ class FinesController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def pay
+    @fine = Fine.find(params[:id])
+    @fine.payment_status = 'paid'
+    if (Time.now - @fine.time_of_issue) <= 5.days
+      @fine.amount *= 0.5
+    else
+      days_overdue = (Time.now - @fine.time_of_issue).to_i / 1.day
+      @fine.amount = (@fine.amount * 0.02 * days_overdue)
+    end
+    @fine.save
+    redirect_to fines_path
   end
 
   def destroy

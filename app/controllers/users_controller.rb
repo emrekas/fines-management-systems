@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   def index
     @users = User.all
   end
@@ -19,11 +20,16 @@ class UsersController < ApplicationController
 
   def logout
     session[:user_id] = nil
-    redirect_to users_path
+    redirect_to home_path
   end
 
   def show
     @user = User.find(params[:id])
+  end
+
+  def profile
+    @user = User.find(current_user.id)
+    redirect_to user_path(@user)
   end
 
   def register
@@ -60,6 +66,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password, :surname)
+      params.require(:user).permit(:name, :email, :password, :surname, :role)
     end
 end

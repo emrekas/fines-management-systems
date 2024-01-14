@@ -1,0 +1,38 @@
+<h1>
+  Show Profile
+</h1>
+
+<div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <label class="form-control"><%= @user.name %></label>
+    </div>
+    <div class="form-group">
+      <label for="phone">Surname</label>
+      <label class="form-control"><%= @user.surname %></label>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <label class="form-control"><%= @user.email %></label>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <label class="form-control"><%= @user.phone_number %></label>
+    </div>
+    <div class="form-group">
+      <label for="address">National Id</label>
+      <label class="form-control"><%= @user.national_id %></label>
+    </div>
+    <div class="form-group">
+      <label for="address">Date of Birt</label>
+      <label class="form-control"><%= @user.date_of_birth %></label>
+    </div>
+
+    <div class="form-group">
+      <label for="role">Role</label>
+      <label class="form-control"><%= @user.role %></label>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" onclick="window.location.href='/users/<%= @user.id %>/edit'">Edit</button>
+    </div>
+</div>
