@@ -1,0 +1,39 @@
+<!-- app/views/vehicles/new.html.erb -->
+<div class="container mt-5">
+  <h2>Create Vehicle</h2>
+  <%= form_with(model: @vehicle, url: vehicles_path, method: :post, class: 'needs-validation', novalidate: true) do |form| %>
+    <div class="mb-3">
+      <%= form.label :plate_number, class: 'form-label' %>
+      <%= form.text_field :plate_number, class: 'form-control', required: true %>
+      <div class="invalid-feedback">
+        Valid plate number is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :vehicle_type, class: 'form-label' %>
+      <%= form.text_field :vehicle_type, class: 'form-control', required: true %>
+      <div class="invalid-feedback">
+        Valid vehicle type is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :make, class: 'form-label' %>
+      <%= form.text_field :make, class: 'form-control', required: true %>
+      <div class="invalid-feedback">
+        Valid make is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :year_of_production, class: 'form-label' %>
+      <%= form.number_field :year_of_production, class: 'form-control', required: true %>
+      <div class="invalid-feedback">
+        Valid year of production is required.
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Create Vehicle</button>
+  <% end %>
+</div>

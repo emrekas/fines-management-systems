@@ -2,14 +2,14 @@
 
 one:
   plate_number: MyString
-  type: 
+  vehicle_type: MyString
   make: MyString
   year_of_production: 1
   user: one
 
 two:
   plate_number: MyString
-  type: 
+  vehicle_type: MyString
   make: MyString
   year_of_production: 1
   user: two

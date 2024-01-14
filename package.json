@@ -1,0 +1,10 @@
+{
+  "name": "app",
+  "private": "true",
+  "browserslist": [
+    "defaults"
+  ],
+  "dependencies": {
+    "@rails/ujs": "^7.1.2"
+  }
+}

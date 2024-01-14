@@ -1,0 +1,28 @@
+<!-- app/views/fines/index.html.erb -->
+<div class="mt[-2]">
+  <h2>Fine Listing</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Reason</th>
+      <th>Place</th>
+      <th>Time of Issue</th>
+      <th>Amount</th>
+      <th>Payment Status</th>
+      <th>Penalty Amount</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @fines.each do |fine| %>
+      <tr>
+        <td><%= fine.reason %></td>
+        <td><%= fine.place %></td>
+        <td><%= fine.time_of_issue %></td>
+        <td><%= fine.amount %></td>
+        <td><%= fine.payment_status %></td>
+        <td><%= fine.penalty_amount %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

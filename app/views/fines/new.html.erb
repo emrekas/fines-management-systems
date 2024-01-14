@@ -1,0 +1,61 @@
+<!-- app/views/fines/new.html.erb -->
+<div class="col-md-12 col-lg-12">
+  <h4 class="mb-3">Billing address</h4>
+  <%= form_with(model: @fine, class: 'needs-validation', novalidate: true) do |form| %>
+    <div class="row g-3">
+      <div class="col-sm-6">
+        <%= form.label :reason, class: 'form-label' %>
+        <%= form.text_field :reason, class: 'form-control', required: true %>
+        <div class="invalid-feedback">
+          Valid reason is required.
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <%= form.label :place, class: 'form-label' %>
+        <%= form.text_field :place, class: 'form-control', required: true %>
+        <div class="invalid-feedback">
+          Valid place is required.
+        </div>
+      </div>
+
+      <div class="col-12">
+        <%= form.label :time_of_issue, class: 'form-label' %>
+        <%= form.datetime_local_field :time_of_issue, class: 'form-control', required: true %>
+        <div class="invalid-feedback">
+          Valid time of issue is required.
+        </div>
+      </div>
+
+      <div class="col-12">
+        <%= form.label :amount, class: 'form-label' %>
+        <%= form.number_field :amount, class: 'form-control', required: true %>
+        <div class="invalid-feedback">
+          Valid amount is required.
+        </div>
+      </div>
+
+      <div class="col-12">
+        <%= form.label :payment_status, class: 'form-label' %>
+        <%= form.select :payment_status, %w[unpaid paid], { include_blank: 'Select Payment Status' }, class: 'form-select', required: true %>
+        <div class="invalid-feedback">
+          Please select a valid payment status.
+        </div>
+      </div>
+
+      <div class="col-12">
+        <%= form.label :vehicle_id, class: 'form-label' %>
+        <%= form.collection_select :vehicle_id, Vehicle.all, :id, :plate_number, { include_blank: 'Select Vehicle' }, class: 'form-select', required: true %>
+        <div class="invalid-feedback">
+          Please select a valid vehicle.
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="my-4">
+
+
+    <%= form.submit 'Create', class: 'w-100 btn btn-primary btn-lg' %>
+  <% end %>
+</div>

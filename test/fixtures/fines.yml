@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reason: MyString
+  place: MyString
+  time_of_issue: 2024-01-14 02:28:30
+  amount: 9.99
+  payment_status: MyString
+  penalty_amount: 9.99
+  vehicle: one
+
+two:
+  reason: MyString
+  place: MyString
+  time_of_issue: 2024-01-14 02:28:30
+  amount: 9.99
+  payment_status: MyString
+  penalty_amount: 9.99
+  vehicle: two
